@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>返回顶部</title>
+    <style>
+        .container{
+            width: 980px;
+            margin: 0 auto;
+            height: auto;
+            min-height: 100%;
+            position: relative;
+        }
+        .content{
+            height: 2000px;
+            border: 1px solid #666666;
+        }
+        .backToTop{
+            position: fixed;
+            bottom: 20px;
+            right: 10%;
+        }
+        .backToTop a{
+            background: none repeat scroll 0 0 #336699 ;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">我是头部</div>
+        <div class="content">我是内容部分,高度是2000px</div>
+        <div class="footer">我是底部</div>
+        <div class="backToTop"> <a href="javascript:;">点我返回顶部</a></div>
+    </div>
+    <!-- <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script> -->
+    <script src="./jq.js"></script>
+    <script>
+        $(function(){
+            $(".backToTop a").click(function(){
+                $('html,body').animate({scrollTop: 0},'slow')
+            })
+        })
+    </script>
+</body>
+</html>

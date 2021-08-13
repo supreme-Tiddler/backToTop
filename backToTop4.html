@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>返回顶部2</title>
+    <style>
+        .container{
+            width: 980px;
+            margin: 0 auto;
+            height: auto;
+            min-height: 100%;
+            position: relative;
+        }
+        .content{
+            height: 2000px;
+            border: 1px solid #666666;
+        }
+        .backToTop{
+            position: fixed;
+            bottom: 20px;
+            right: 10%;
+        }
+        .backToTop a,.goBack a{
+            background: none repeat scroll 0 0 #336699 ;
+            border: 1px solid #ccc;
+        }
+        .goBack{
+            position: fixed;
+            bottom: 50px;
+            right: 10%;
+            display: none;
+        }
+        .content{
+            width: 100%;
+            height: 2000px;
+            background: url('../../图片/1755移动端_01.png') no-repeat fixed;
+        }
+        .footer{
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div>改进版js, 默认不显示,滚动到一定距离显示</div>
+    <div class="container">
+        <div class="header">我是头部</div>
+        <div class="content">我是内容部分,高度是2000px</div>
+        <div class="footer">
+            
+        </div>
+
+        <div class="goBack"> <a href="javascript:;">点我返回顶部js</a></div>
+    </div>
+    <script>
+
+        var goBack = document.querySelector(".goBack")
+
+        window.onscroll = function () {
+            scrollFunction()
+        }
+
+        function scrollFunction(){
+            if(document.body.scrollTop>200 || document.documentElement.scrollTop>200){
+                goBack.style.display="block"
+            }else{
+                goBack.style.display="none"
+            }
+        }
+
+        // 动画函数
+        function animate(obj,offset,callback){
+            clearInterval(obj.timer)
+            obj.timer = setInterval(function(){
+                if(window.pageYOffset==offset){
+                    clearInterval(obj.timer)
+                    callback && callback()
+                }
+                var step = (offset - window.pageYOffset) / 10
+                step = step > 0 ? Math.ceil(step) : Math.floor(step)
+                window.scrollTo(0, window.pageYOffset + step)
+            },10)
+        }
+        // 点击返回
+        goBack.onclick = function () {
+            animate(window, 0)
+        }
+
+    
+    </script>
+</body>
+</html>
